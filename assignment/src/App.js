@@ -8,7 +8,7 @@ import Searchbar from './Components/Search';
 function App() {
   return (
     <div className="main_div">
-      <Searchbar/>
+      {/* <Searchbar/> */}
       <Home data={data}/>
     </div>
   );

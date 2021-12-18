@@ -21,7 +21,7 @@
 .input_box{
     height: 50px;
     width: 80vh;
-    font-size: 2.8rem;
+    font-size: 2.1rem;
     padding: 2.5rem 1.2rem;
 }
 input,
@@ -33,7 +33,32 @@ input:active:focus {
   outline: none;
 }
 #fa-search{
-    font-size:26px;
+    font-size:24px;
     margin-left: 3%;
     color: #ccc;
+}
+.elem_div{
+    height: 40vh;
+    width: 100%;
+    overflow-y: scroll;
+}
+.child_div{
+    height: 50px;
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;
+}
+.add_btn{
+    height: 50px;
+    width: 20%;
+    /* border: 1px solid rgb(0, 0, 34); */
+    margin-left: 20%;
+}
+.add_btn i{
+font-size: 24px;
+}
+.wish_list{
+    height: 100px;
+    width: 50%;
+    border: 1px solid green;
 }

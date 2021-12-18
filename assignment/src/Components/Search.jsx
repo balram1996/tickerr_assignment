@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 function Searchbar() {
     const [text,setText] = React.useState("");
@@ -19,17 +20,15 @@ function Searchbar() {
 
     }
 
-    // const handleChange = (e)=>{
-    //  e.preventDefault();
-    //  const value = e.target.value;
-    //  console.log(value)
-    // }
+    
   return (
     <>
-      <div>
+      <div className="search_div">
+      <i class="fas fa-search" id="fa-search"></i>
         <input
+          className="input_box"
           type="text"
-          placeholder="Search by brand or company name..."
+          placeholder="Search by brand or Company name....."
           onInput={chageClick}
         />
       </div>

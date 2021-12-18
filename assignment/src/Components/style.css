@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+.search_div{
+      height: 55px;
+      width: 90vh;
+      margin-top: 50px;
+      border: 0.1rem solid #ccc;
+      border-radius: 0.4rem;
+      background-color: white;
+  }
+.input_box{
+    height: 50px;
+    width: 80vh;
+    font-size: 2.8rem;
+    padding: 2.5rem 1.2rem;
+}
+input,
+input:focus,
+input:active,
+input:active:focus {
+  border: none;
+  padding: 2.3rem 1.5rem;
+  outline: none;
+}
+#fa-search{
+    font-size:26px;
+    margin-left: 3%;
+    color: #ccc;
+}

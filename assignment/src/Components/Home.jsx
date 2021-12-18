@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./style.css";
 //console.log(data)
 
 function Home({ data }) {
@@ -9,7 +9,7 @@ function Home({ data }) {
         [elem[0], elem[1], elem[2]] = elem;
         return (
           <div>
-            <h1>{elem[0]}</h1>
+            
           </div>
         );
       })}

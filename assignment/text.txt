@@ -1,0 +1,10 @@
+ {
+                      addList.length>0 ? check(elem).status ? (<div>deleat</div>):(<div>add</div>):""
+                         
+                    } 
+
+
+                    <i
+                      className="fas fa-plus"
+                      onClick={() => addWatchList(elem)}
+                    ></i>

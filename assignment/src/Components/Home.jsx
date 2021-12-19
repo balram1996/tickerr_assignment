@@ -1,64 +1,74 @@
 import React, { useEffect } from "react";
 import "./style.css";
 import { v4 as uuidv4 } from "uuid";
-const axios = require('axios');
+const axios = require("axios");
 
 function Home({ data }) {
   const [text, setText] = React.useState("");
   const [addList, setAddList] = React.useState([]);
-  const [style,setStyle] = React.useState("none");
-  
+  const [localData, setLocalData] = React.useState([]);
+  const [color, setColor] = React.useState("red");
+
+  const handleMouseOver = (i) => {
+    let show = document.getElementById(i);
+    show.style.display = "block";
+  };
+
+  const handleMouseLeave = (i) => {
+    let show = document.getElementById(i);
+    show.style.display = "none";
+  };
   const changeClick = (e) => {
     const { value } = e.target;
     setText(value);
   };
 
-  const addWatchList = async (elem) => {
+  useEffect(() => {
+    addWatchList();
+  }, []);
 
-    let val = [...elem];
-    await axios
-    .post("http://localhost:4000/users" ,val)
-    .then((e)=>{
-      console.log(e)
-      fetchData();
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+  const addWatchList = (elem) => {
+    let local = JSON.parse(localStorage.getItem("marketData"));
+    if (elem!==undefined){
+  
+      if (local === null) {
+        local = [elem];
+      } else {
+        local.push(elem);
+      }
+      localStorage.setItem("marketData", JSON.stringify(local));
+
+      local = JSON.parse(localStorage.getItem("marketData"));
+    }
+    if(local==null){
+      local= [];
+    }
+    setAddList(local);
   };
-   
-  useEffect(()=>{
-    fetchData();
-  },[]);
+  
 
-  const fetchData = async ()=>{
-    await axios
-    .get("http://localhost:4000/users")
-    .then((e)=>{
-      setAddList(e.data);
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+  function check(elem){
+    for(let i = 0 ; i<addList.length ; i++){
+        if(addList[i][0].toLowerCase()===elem[0].toLowerCase()){
+          return {
+            status: true,
+            id: addList[i][3]
+          }
+        }
+    }
+    return false;
+  }
+
+  const deleteItem = (index) => {
+    const updatedItem = addList.filter((curElem) => {
+      return curElem[1] !== index;
+    });
+    setAddList(updatedItem);
   };
 
-  const deleteItem= async(index)=>{
-    
-    await axios
-    .get("http://localhost:4000/users")
-    .then((e)=>{
-      //console.log(e.data)
-      const updatedItem = e.data.filter((curElem) => {
-        return curElem[3] !== index;
-      });
-
-      //setAddList(updatedItem)
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-    //setAddList(updatedItem);
-
+  function profitLoss(d1, d2) {
+    let per = (d2 - d1) / 100;
+    return per.toPrecision(1) + "%";
   }
   return (
     <>
@@ -89,42 +99,62 @@ function Home({ data }) {
               }
             })
             .map((elem) => {
-              [elem[0], elem[1], elem[2],elem[3]] = elem;
+              [elem[0], elem[1], elem[2], elem[3]] = elem;
               const mainHeading = elem[0].split("::");
               return (
-                <div className="child_div" key={elem[3]} 
-                onMouseEnter={()=>{
-                    setStyle("block");
-                  
-                }}
-                onMouseLeave={()=>{
-                  setStyle("none");
-                }}
+                <div
+                  className="child_div"
+                  key={elem[3]}
+                  style={
+                    (elem[2] - elem[1]) / elem[2] < 0
+                      ? { color: "red" }
+                      : { color: "blue" }
+                  }
+                  onMouseOver={() => handleMouseOver(elem[3])}
+                  onMouseLeave={() => handleMouseLeave(elem[3])}
                 >
                   <div className="brandName">
                     <h1>{mainHeading[0]}</h1>
                     <h2>{mainHeading[1]}</h2>
                   </div>
-                    <div className="add_btn" style={{display:style}}>
-                    <i
+                  <div className="figureData">
+                    <h1>{elem[1]}</h1>
+                    <h2>{profitLoss(elem[1], elem[2])}</h2>
+                  </div>
+                  <div
+                    className="add_btn"
+                    style={{ display: "none" }}
+                    id={elem[3]}
+                  >
+                   {
+                     addList.length===0 ? ( <i
                       className="fas fa-plus"
                       onClick={() => addWatchList(elem)}
-                    ></i>
+                    ></i>) :( 
+                      check(elem).status ? (<div>deleat</div>):(<div>add</div>)
+                           
+                    )
+                   }
                   </div>
                 </div>
               );
             })}
         </div>
         <div className="wish_list">
-          {addList.length != 0 &&
-            addList.map((elem) => {
+          <div className="watch_list_name_div">
+            <h1>WatchList</h1>
+          </div>
+          {addList[0] ? 
+           addList.map((elem) => {
               return (
-               <div>
-              <h1>{elem}</h1>
-              <button onClick={() => deleteItem(elem[3])}>del</button>
-              </div>
+                <div className="watchList_main_div">
+                  <h1>{elem}</h1>
+                  <button onClick={() => deleteItem(elem[1])}>del</button>
+                </div>
               );
-            })}
+            }):""
+          }
+
         </div>
       </div>
     </>

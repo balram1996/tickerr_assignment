@@ -41,13 +41,13 @@ input:active:focus {
     height: 8vh;
     width: 100%;
     margin-top: 10px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
 }
 .name{
     height: 8vh;
     width: 15%;
-    border: 1px solid rgb(250, 7, 209);
+    /* border: 1px solid rgb(250, 7, 209); */
     font-weight: bolder;
     font-size: 17px;
     /* color: white; */
@@ -55,7 +55,7 @@ input:active:focus {
 .Icons{
     height: 8vh;
     width: 20%;
-    border: 1px solid rgb(250, 7, 209);
+    /* border: 1px solid rgb(250, 7, 209); */
     display: flex;
     margin-left: 55%;
     padding: 1.5em;
@@ -73,13 +73,21 @@ input:active:focus {
     width: 100%;
     overflow-y: scroll;
 }
+.elem_div::-webkit-scrollbar {
+    display: none;
+}
 .child_div{
     height: 50px;
     width: 100%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     margin-top: 12px;
     /* color: white; */
+}
+.brandName{
+    height: 50px;
+    width: 20%;
+    /* border: 1px solid blue; */
 }
 .brandName h2{
     margin-top: 5px;
@@ -89,18 +97,38 @@ input:active:focus {
 .add_btn{
     height: 30px;
     width: 5%;
-    border: 1px solid rgb(0, 0, 34);
-    margin-left: 63.5%;
+    /* border: 1px solid rgb(0, 0, 34); */
+    margin-left: 1%;
     justify-content: center;
     text-align: center;
     margin-top: 10px;
-}
 
+}
+.figureData{
+    height: 50px;
+    width: 20%;
+    /* border: 1px solid rgb(0, 0, 34); */
+}
 .add_btn i{
 font-size: 24px;
 }
 .wish_list{
     height: 100px;
     width: 100%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
+}
+.watch_list_name_div{
+    height: 30px;
+    width: 100%;
+    /* border: 1px solid rgb(233, 40, 6); */
+    color: rgb(0, 195, 255);
+}
+.watchList_main_div{
+    height: 50px;
+    width: 100%;
+    /* border: 1px solid blue; */
+    display: flex;
+}
+.watchList_main_div button{
+    margin-left: 60%;
 }

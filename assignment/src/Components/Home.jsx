@@ -86,7 +86,7 @@ function Home({ data }) {
           </div>
           <div className="Icons">
             <i className="fas fa-pen" id="pen"></i>
-            <i className="fas fa-trash-alt" id="trash"></i>
+            <i className="fas fa-trash-alt" id="trash1"></i>
           </div>
         </div>
         <div className="elem_div">
@@ -107,8 +107,8 @@ function Home({ data }) {
                   key={elem[3]}
                   style={
                     (elem[2] - elem[1]) / elem[2] < 0
-                      ? { color: "red" }
-                      : { color: "blue" }
+                      ? { color: "rgb(235, 35, 8)" }
+                      : { color: "rgb(0, 195, 255)" }
                   }
                   onMouseOver={() => handleMouseOver(elem[3])}
                   onMouseLeave={() => handleMouseLeave(elem[3])}
@@ -131,7 +131,10 @@ function Home({ data }) {
                       className="fas fa-plus"
                       onClick={() => addWatchList(elem)}
                     ></i>) :( 
-                      check(elem).status ? (<div>deleat</div>):(<div>add</div>)
+                      check(elem).status ? (<i className="fas fa-trash-alt" id="trash"></i>):(<i
+                        className="fas fa-plus"
+                        onClick={() => addWatchList(elem)}
+                      ></i>)
                            
                     )
                    }
@@ -140,16 +143,28 @@ function Home({ data }) {
               );
             })}
         </div>
+        <hr></hr>
         <div className="wish_list">
           <div className="watch_list_name_div">
-            <h1>WatchList</h1>
+            <h1 className="myWatchlist"> My WatchList</h1>
           </div>
           {addList[0] ? 
            addList.map((elem) => {
+              const n = elem[0];
+              const n_name = n.split("::");
               return (
-                <div className="watchList_main_div">
-                  <h1>{elem}</h1>
-                  <button onClick={() => deleteItem(elem[1])}>del</button>
+                <div className="watchList_main_div"
+                style={
+                  (elem[2] - elem[1]) / elem[2] < 0
+                    ? { color: "rgb(235, 35, 8)" }
+                    : { color: "rgb(0, 195, 255)" }
+                }
+                >
+                  <div className="watch_list_name_1">
+                  <h1>{n_name[0]}</h1>
+                  <h2>{n_name[1]}</h2>
+                  </div>
+                  <i className="fas fa-trash-alt" id="trash" onClick={() => deleteItem(elem[1])}></i>
                 </div>
               );
             }):""

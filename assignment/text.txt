@@ -3,8 +3,20 @@
                          
                     } 
 
-
+================================================================================
                     <i
                       className="fas fa-plus"
                       onClick={() => addWatchList(elem)}
                     ></i>
+
+================================================================================
+
+                     {
+                     addList.length===0 ? ( <i
+                      className="fas fa-plus"
+                      onClick={() => addWatchList(elem)}
+                    ></i>) :( 
+                      check(elem).status ? (<div>deleat</div>):(<div>add</div>)
+                           
+                    )
+                   }

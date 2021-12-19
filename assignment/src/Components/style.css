@@ -12,7 +12,7 @@
   }
 .search_div{
       height: 55px;
-      width: 90vh;
+      width: 120vh;
       margin-top: 50px;
       border: 0.1rem solid #ccc;
       border-radius: 0.4rem;
@@ -37,6 +37,37 @@ input:active:focus {
     margin-left: 3%;
     color: #ccc;
 }
+.name_div{
+    height: 8vh;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid blue;
+    display: flex;
+}
+.name{
+    height: 8vh;
+    width: 15%;
+    border: 1px solid rgb(250, 7, 209);
+    font-weight: bolder;
+    font-size: 17px;
+    /* color: white; */
+}
+.Icons{
+    height: 8vh;
+    width: 20%;
+    border: 1px solid rgb(250, 7, 209);
+    display: flex;
+    margin-left: 55%;
+    padding: 1.5em;
+}
+#pen{
+    font-size: 20px;
+}
+#trash{
+    font-size: 20px;
+    margin-left: 22%;
+    color: red;
+}
 .elem_div{
     height: 40vh;
     width: 100%;
@@ -47,18 +78,29 @@ input:active:focus {
     width: 100%;
     border: 1px solid blue;
     display: flex;
+    margin-top: 12px;
+    /* color: white; */
+}
+.brandName h2{
+    margin-top: 5px;
+    margin-left: 15%;
+    font-weight: bolder;
 }
 .add_btn{
-    height: 50px;
-    width: 20%;
-    /* border: 1px solid rgb(0, 0, 34); */
-    margin-left: 20%;
+    height: 30px;
+    width: 5%;
+    border: 1px solid rgb(0, 0, 34);
+    margin-left: 63.5%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
 }
+
 .add_btn i{
 font-size: 24px;
 }
 .wish_list{
     height: 100px;
-    width: 50%;
+    width: 100%;
     border: 1px solid green;
 }

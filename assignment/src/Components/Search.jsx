@@ -1,9 +1,10 @@
 import React from "react";
 
 
-function Searchbar() {
+
+function Searchbar({data1}) {
     
-    
+   
   return (
     <>
       
